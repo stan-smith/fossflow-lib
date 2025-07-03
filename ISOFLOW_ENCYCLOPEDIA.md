@@ -270,10 +270,17 @@ npm run lint:fix   # Auto-fix issues
 
 **Common Hooks**:
 - `useScene.ts`: Merged scene data
-- `useModelItem.ts`: Individual item access
-- `useConnector.ts`: Connector management
+- `useModelItem.ts`: Individual item access (returns `ModelItem | null`)
+- `useViewItem.ts`: View item access (returns `ViewItem | null`)
+- `useConnector.ts`: Connector management (returns `Connector | null`)
+- `useRectangle.ts`: Rectangle access (returns `Rectangle | null`)
+- `useTextBox.ts`: Text box access (returns `TextBox | null`)
+- `useIcon.tsx`: Icon access (returns `Icon | null`)
+- `useColor.ts`: Color access (returns `Color | null`)
 - `useIsoProjection.ts`: Coordinate conversion
 - `useDiagramUtils.ts`: Diagram operations
+
+**Important**: All item access hooks now return `null` instead of throwing when items don't exist, preventing React unmount errors.
 
 ### 3. Interaction System (`src/interaction/`)
 
@@ -315,6 +322,37 @@ npm run lint:fix   # Auto-fix issues
 - `textBox.ts`: Text box validation
 - `views.ts`: View validation
 
+## Undo/Redo System
+
+### Implementation Details
+
+The undo/redo system uses a transaction-based approach to ensure atomic operations:
+
+**Key Components**:
+- **Transaction System**: Groups related operations together
+- **Dual Store Coordination**: Synchronizes model and scene stores
+- **History Tracking**: Maintains separate history for each store
+
+**Important Considerations**:
+- Operations that affect both model and scene (like placing icons) must use transactions
+- Without transactions, undo/redo can cause "Invalid item in view" errors
+- The system prevents partial states by grouping related changes
+
+### Error Handling Patterns
+
+**Problem**: Components can try to access deleted items during React unmounting
+**Solution**: Graceful null handling throughout the codebase
+
+**Key Changes**:
+1. Added `getItemById` utility that returns `null` instead of throwing
+2. Updated all hooks to return `null` when items don't exist
+3. Added null checks in all components using these hooks
+
+**Affected Files**:
+- `/src/utils/common.ts`: Added `getItemById` function
+- All hooks in `/src/hooks/`: Updated to handle missing items
+- All components: Added null checks and early returns
+
 ## Navigation Quick Reference
 
 ### Need to modify...
@@ -330,6 +368,7 @@ npm run lint:fix   # Auto-fix issues
 **Keyboard shortcuts?** → `/src/interaction/useInteractionManager.ts`
 **Tool selection?** → `/src/components/ToolMenu/`
 **Selection handles?** → `/src/components/TransformControlsManager/`
+**Undo/Redo?** → Check transaction system in model/scene stores
 
 ### Want to understand...
 

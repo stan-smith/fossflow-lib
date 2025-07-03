@@ -1,15 +1,15 @@
 {
-  "name": "isoflow",
-  "version": "1.1.1",
+  "name": "fossflow",
+  "version": "1.0.0",
   "private": false,
-  "description": "An open-source React component for drawing network diagrams.",
+  "description": "An open-source React component for drawing network diagrams - forked from isoflow.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/markmanx/isoflow.git"
+    "url": "https://github.com/stan-smith/fossflow-lib.git"
   },
   "main": "./dist/index.js",
-  "types": "./dist/Isoflow.d.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "start": "webpack serve --config ./webpack/dev.config.js",
     "dev": "nodemon --watch ./src/ -e ts,tsx --exec npm run build",

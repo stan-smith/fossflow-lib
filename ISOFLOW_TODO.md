@@ -4,15 +4,16 @@ Based on GitHub issues and community feedback. Each item includes relevant codeb
 
 ## High Priority - Core Functionality
 
-### 1. Implement Undo/Redo System
+### 1. ~~Implement Undo/Redo System~~ ✅ COMPLETED
 **Issue**: Undo functionality is mentioned in README but not working
 **Priority**: HIGH
-**Relevant Codebase Areas**:
-- `/src/stores/modelStore.tsx` - Need to add history tracking
-- `/src/stores/reducers/` - Modify reducers to support undo stack
-- `/src/interaction/useInteractionManager.ts` - Add keyboard shortcuts (Ctrl+Z/Ctrl+Y)
-- `/src/components/MainMenu/MainMenu.tsx` - Add undo/redo menu items
-- Consider using a library like `zustand-middleware-immer` for undo/redo support
+**Status**: COMPLETED - Implemented by pi22by7 with transaction-based system
+**Implementation Details**:
+- Transaction system groups related operations for atomic undo/redo
+- Keyboard shortcuts (Ctrl+Z/Ctrl+Y) working
+- UI buttons added to interface
+- Fixed synchronization issues between model and scene stores
+- Added comprehensive error handling for deleted items
 
 ### 2. Fix Tool Selection Persistence
 **Issue**: Tool bar resets to select tool after every workspace click
