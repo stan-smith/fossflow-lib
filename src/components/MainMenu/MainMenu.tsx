@@ -129,7 +129,7 @@ export const MainMenu = () => {
 
   return (
     <UiElement>
-      <IconButton Icon={<MenuIcon />} name="Main menu" onClick={onToggleMenu} />
+      <IconButton Icon={<MenuIcon />} name="Main menu" onClick={onToggleMenu} isActive={isMainMenuOpen} />
 
       <Menu
         anchorEl={anchorEl}
