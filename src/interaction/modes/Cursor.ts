@@ -92,12 +92,22 @@ const mousedown: ModeActionsAction = ({
         draft.mousedownItem = itemAtTile;
       })
     );
+
+
   } else {
     uiState.actions.setMode(
       produce(uiState.mode, (draft) => {
         draft.mousedownItem = null;
       })
     );
+
+    uiState.actions.setItemControls(null);
+    
+    // Show context menu for empty space on left click
+    uiState.actions.setContextMenu({
+      type: 'EMPTY',
+      tile: uiState.mouse.position.tile
+    });
   }
 };
 
@@ -138,6 +148,34 @@ export const Cursor: ModeActions = {
   mouseup: ({ uiState, isRendererInteraction }) => {
     if (uiState.mode.type !== 'CURSOR' || !isRendererInteraction) return;
 
+    const hasMoved = uiState.mouse.mousedown && hasMovedTile(uiState.mouse);
+    
+    if (uiState.mode.mousedownItem && !hasMoved) {
+      if (uiState.mode.mousedownItem.type === 'ITEM') {
+        uiState.actions.setItemControls({
+          type: 'ITEM',
+          id: uiState.mode.mousedownItem.id
+        });
+      } else if (uiState.mode.mousedownItem.type === 'RECTANGLE') {
+        uiState.actions.setItemControls({
+          type: 'RECTANGLE',
+          id: uiState.mode.mousedownItem.id
+        });
+      } else if (uiState.mode.mousedownItem.type === 'CONNECTOR') {
+        uiState.actions.setItemControls({
+          type: 'CONNECTOR',
+          id: uiState.mode.mousedownItem.id
+        });
+      } else if (uiState.mode.mousedownItem.type === 'TEXTBOX') {
+        uiState.actions.setItemControls({
+          type: 'TEXTBOX',
+          id: uiState.mode.mousedownItem.id
+        });
+      }
+    } else {
+      uiState.actions.setItemControls(null);
+    }
+    
     uiState.actions.setMode(
       produce(uiState.mode, (draft) => {
         draft.mousedownItem = null;

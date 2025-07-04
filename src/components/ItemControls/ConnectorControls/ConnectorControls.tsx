@@ -1,6 +1,6 @@
 import React from 'react';
 import { Connector, connectorStyleOptions } from 'src/types';
-import { Box, Slider, Select, MenuItem, TextField } from '@mui/material';
+import { Box, Slider, Select, MenuItem, TextField, IconButton as MUIIconButton } from '@mui/material';
 import { useConnector } from 'src/hooks/useConnector';
 import { ColorSelector } from 'src/components/ColorSelector/ColorSelector';
 import { useUiStateStore } from 'src/stores/uiStateStore';
@@ -8,6 +8,7 @@ import { useScene } from 'src/hooks/useScene';
 import { ControlsContainer } from '../components/ControlsContainer';
 import { Section } from '../components/Section';
 import { DeleteButton } from '../components/DeleteButton';
+import { Close as CloseIcon } from '@mui/icons-material';
 
 interface Props {
   id: string;
@@ -27,61 +28,77 @@ export const ConnectorControls = ({ id }: Props) => {
 
   return (
     <ControlsContainer>
-      <Section>
-        <TextField
-          label="Description"
-          value={connector.description}
-          onChange={(e) => {
-            updateConnector(connector.id, {
-              description: e.target.value as string
-            });
+      <Box sx={{ position: 'relative', paddingTop: '24px' }}>
+        {/* Close button */}
+        <MUIIconButton
+          aria-label="Close"
+          onClick={() => uiStateActions.setItemControls(null)}
+          sx={{
+            position: 'absolute',
+            top: 16,
+            right: 16,
+            zIndex: 2,
           }}
-        />
-      </Section>
-      <Section>
-        <ColorSelector
-          onChange={(color) => {
-            return updateConnector(connector.id, { color });
-          }}
-          activeColor={connector.color}
-        />
-      </Section>
-      <Section title="Width">
-        <Slider
-          marks
-          step={10}
-          min={10}
-          max={30}
-          value={connector.width}
-          onChange={(e, newWidth) => {
-            updateConnector(connector.id, { width: newWidth as number });
-          }}
-        />
-      </Section>
-      <Section title="Style">
-        <Select
-          value={connector.style}
-          onChange={(e) => {
-            updateConnector(connector.id, {
-              style: e.target.value as Connector['style']
-            });
-          }}
+          size="small"
         >
-          {Object.values(connectorStyleOptions).map((style) => {
-            return <MenuItem value={style}>{style}</MenuItem>;
-          })}
-        </Select>
-      </Section>
-      <Section>
-        <Box>
-          <DeleteButton
-            onClick={() => {
-              uiStateActions.setItemControls(null);
-              deleteConnector(connector.id);
+          <CloseIcon />
+        </MUIIconButton>
+        <Section>
+          <TextField
+            label="Description"
+            value={connector.description}
+            onChange={(e) => {
+              updateConnector(connector.id, {
+                description: e.target.value as string
+              });
             }}
           />
-        </Box>
-      </Section>
+        </Section>
+        <Section>
+          <ColorSelector
+            onChange={(color) => {
+              return updateConnector(connector.id, { color });
+            }}
+            activeColor={connector.color}
+          />
+        </Section>
+        <Section title="Width">
+          <Slider
+            marks
+            step={10}
+            min={10}
+            max={30}
+            value={connector.width}
+            onChange={(e, newWidth) => {
+              updateConnector(connector.id, { width: newWidth as number });
+            }}
+          />
+        </Section>
+        <Section title="Style">
+          <Select
+            value={connector.style}
+            onChange={(e) => {
+              updateConnector(connector.id, {
+                style: e.target.value as Connector['style']
+              });
+            }}
+          >
+            {Object.values(connectorStyleOptions).map((style) => {
+              return <MenuItem value={style}>{style}</MenuItem>;
+            })}
+          </Select>
+        </Section>
+        <Section>
+          <Box>
+            <DeleteButton
+              onClick={() => {
+                uiStateActions.setItemControls(null);
+                deleteConnector(connector.id);
+              }}
+            />
+          </Box>
+        </Section>
+      </Box>
     </ControlsContainer>
   );
 };
