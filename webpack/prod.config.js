@@ -6,7 +6,7 @@ module.exports = {
   mode: 'production',
   target: 'web',
   entry: {
-    'index': './src/Isoflow.tsx',
+    'index': './src/index.ts',
     '/standaloneExports': './src/standaloneExports.ts',
   },
   output: {

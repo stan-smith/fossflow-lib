@@ -1,0 +1,31 @@
+# Source files
+src/
+webpack/
+docs/
+.circleci/
+.codesandbox/
+.vscode/
+
+# Config files
+.eslintrc
+.prettierrc
+.nvmrc
+jest.config.js
+tsconfig.json
+*.config.js
+
+# Build artifacts
+node_modules/
+*.log
+
+# Documentation
+*.md
+!README.md
+!LICENSE
+
+# Git
+.git/
+.gitignore
+
+# Other
+Dockerfile
