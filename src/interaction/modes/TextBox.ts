@@ -26,6 +26,7 @@ export const TextBox: ModeActions = {
         id: uiState.mode.id
       });
     }
+
     uiState.actions.setMode({
       type: 'CURSOR',
       showCursor: true,
