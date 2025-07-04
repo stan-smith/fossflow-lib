@@ -151,16 +151,20 @@ export const useInteractionManager = () => {
         scene
       });
 
-      if (itemAtTile?.type === 'RECTANGLE') {
+      if (itemAtTile) {
         uiState.actions.setContextMenu({
+          type: 'ITEM',
           item: itemAtTile,
           tile: uiState.mouse.position.tile
         });
-      } else if (uiState.contextMenu) {
-        uiState.actions.setContextMenu(null);
+      } else {
+        uiState.actions.setContextMenu({
+          type: 'EMPTY',
+          tile: uiState.mouse.position.tile
+        });
       }
     },
-    [uiState.mouse, scene, uiState.contextMenu, uiState.actions]
+    [uiState.mouse, scene, uiState.actions]
   );
 
   useEffect(() => {
