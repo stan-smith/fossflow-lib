@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Stack, Alert } from '@mui/material';
+import { Stack, Alert, IconButton as MUIIconButton, Box } from '@mui/material';
 import { ControlsContainer } from 'src/components/ItemControls/components/ControlsContainer';
 import { useUiStateStore } from 'src/stores/uiStateStore';
 import { Icon } from 'src/types';
@@ -9,6 +9,7 @@ import { useIconFiltering } from 'src/hooks/useIconFiltering';
 import { useIconCategories } from 'src/hooks/useIconCategories';
 import { Icons } from './Icons';
 import { IconGrid } from './IconGrid';
+import { Close as CloseIcon } from '@mui/icons-material';
 
 export const IconSelectionControls = () => {
   const uiStateActions = useUiStateStore((state) => {
@@ -36,9 +37,27 @@ export const IconSelectionControls = () => {
   return (
     <ControlsContainer
       header={
-        <Section sx={{ position: 'sticky', top: 0, pt: 6, pb: 3 }}>
+        <Section sx={{ top: 0, pt: 6, pb: 3, position: 'relative', paddingTop: '32px' }}>
+          {/* Close button */}
+          <MUIIconButton
+            aria-label="Close"
+            onClick={() => uiStateActions.setItemControls(null)}
+            sx={{
+              position: 'absolute',
+              top: 12,
+              right: 12,
+              zIndex: 2,
+              padding: 0,
+              background: 'none',
+            }}
+            size="small"
+          >
+            <CloseIcon />
+          </MUIIconButton>
           <Stack spacing={2}>
-            <Searchbox value={filter} onChange={setFilter} />
+            <Box sx={{ marginTop: '8px' }}>
+              <Searchbox value={filter} onChange={setFilter} />
+            </Box>
             <Alert severity="info">
               You can drag and drop any item below onto the canvas.
             </Alert>

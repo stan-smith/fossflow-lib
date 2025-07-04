@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { Box, Stack, Button } from '@mui/material';
+import { Box, Stack, Button, IconButton as MUIIconButton } from '@mui/material';
 import {
   ChevronRight as ChevronRightIcon,
-  ChevronLeft as ChevronLeftIcon
+  ChevronLeft as ChevronLeftIcon,
+  Close as CloseIcon
 } from '@mui/icons-material';
 import { useIconCategories } from 'src/hooks/useIconCategories';
 import { useIcon } from 'src/hooks/useIcon';
@@ -50,11 +51,24 @@ export const NodeControls = ({ id }: Props) => {
     <ControlsContainer>
       <Box
         sx={{
-          bgcolor: (theme) => {
-            return theme.customVars.customPalette.diagramBg;
-          }
+          bgcolor: (theme) => theme.customVars.customPalette.diagramBg,
+          position: 'relative',
         }}
       >
+        {/* Close button */}
+        <MUIIconButton
+          aria-label="Close"
+          onClick={() => uiStateActions.setItemControls(null)}
+          sx={{
+            position: 'absolute',
+            top: 8,
+            right: 8,
+            zIndex: 2,
+          }}
+          size="small"
+        >
+          <CloseIcon />
+        </MUIIconButton>
         <Section sx={{ py: 2 }}>
           <Stack
             direction="row"
@@ -120,3 +134,4 @@ export const NodeControls = ({ id }: Props) => {
     </ControlsContainer>
   );
 };
+
