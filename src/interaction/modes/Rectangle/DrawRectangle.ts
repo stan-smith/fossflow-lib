@@ -43,11 +43,5 @@ export const DrawRectangle: ModeActions = {
   },
   mouseup: ({ uiState }) => {
     if (uiState.mode.type !== 'RECTANGLE.DRAW' || !uiState.mode.id) return;
-
-    uiState.actions.setMode({
-      type: 'CURSOR',
-      showCursor: true,
-      mousedownItem: null
-    });
   }
 };

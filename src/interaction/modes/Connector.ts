@@ -98,11 +98,5 @@ export const Connector: ModeActions = {
     ) {
       scene.deleteConnector(uiState.mode.id);
     }
-
-    uiState.actions.setMode({
-      type: 'CURSOR',
-      showCursor: true,
-      mousedownItem: null
-    });
   }
 };

@@ -13,14 +13,6 @@ export const PlaceIcon: ModeActions = {
         tile: uiState.mouse.position.tile,
         scene
       });
-
-      uiState.actions.setMode({
-        type: 'CURSOR',
-        mousedownItem: itemAtTile,
-        showCursor: true
-      });
-
-      uiState.actions.setItemControls(null);
     }
   },
   mouseup: ({ uiState, scene }) => {
