@@ -113,6 +113,7 @@ export const DragItems: ModeActions = {
     dragItems(uiState.mode.items, uiState.mouse.position.tile, delta, scene);
   },
   mouseup: ({ uiState }) => {
+    uiState.actions.setItemControls(null);
     uiState.actions.setMode({
       type: 'CURSOR',
       showCursor: true,
