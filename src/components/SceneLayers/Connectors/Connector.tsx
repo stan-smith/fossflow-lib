@@ -12,6 +12,9 @@ import { useIsoProjection } from 'src/hooks/useIsoProjection';
 import { useConnector } from 'src/hooks/useConnector';
 import { useScene } from 'src/hooks/useScene';
 import { useColor } from 'src/hooks/useColor';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { IconButton } from 'src/components/IconButton/IconButton';
+import { useUiStateStore } from 'src/stores/uiStateStore';
 
 interface Props {
   connector: ReturnType<typeof useScene>['connectors'][0];
@@ -23,6 +26,7 @@ export const Connector = ({ connector: _connector, isSelected }: Props) => {
   const color = useColor(_connector.color);
   const { currentView } = useScene();
   const connector = useConnector(_connector.id);
+  const uiStateActions = useUiStateStore((state) => state.actions);
   
   if (!connector || !color) {
     return null;
@@ -95,6 +99,13 @@ export const Connector = ({ connector: _connector, isSelected }: Props) => {
 
   return (
     <Box style={css}>
+      <Box sx={{ position: 'absolute', right: 0, top: 0, zIndex: 10 }}>
+        <IconButton
+          name="Show controls"
+          Icon={<MoreVertIcon />}
+          onClick={() => uiStateActions.setItemControls({ type: 'CONNECTOR', id: _connector.id })}
+        />
+      </Box>
       <Svg
         style={{
           // TODO: The original x coordinates of each tile seems to be calculated wrongly.

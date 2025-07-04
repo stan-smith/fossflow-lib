@@ -92,16 +92,12 @@ const mousedown: ModeActionsAction = ({
         draft.mousedownItem = itemAtTile;
       })
     );
-
-    uiState.actions.setItemControls(itemAtTile);
   } else {
     uiState.actions.setMode(
       produce(uiState.mode, (draft) => {
         draft.mousedownItem = null;
       })
     );
-
-    uiState.actions.setItemControls(null);
   }
 };
 
@@ -141,32 +137,6 @@ export const Cursor: ModeActions = {
   mousedown,
   mouseup: ({ uiState, isRendererInteraction }) => {
     if (uiState.mode.type !== 'CURSOR' || !isRendererInteraction) return;
-
-    if (uiState.mode.mousedownItem) {
-      if (uiState.mode.mousedownItem.type === 'ITEM') {
-        uiState.actions.setItemControls({
-          type: 'ITEM',
-          id: uiState.mode.mousedownItem.id
-        });
-      } else if (uiState.mode.mousedownItem.type === 'RECTANGLE') {
-        uiState.actions.setItemControls({
-          type: 'RECTANGLE',
-          id: uiState.mode.mousedownItem.id
-        });
-      } else if (uiState.mode.mousedownItem.type === 'CONNECTOR') {
-        uiState.actions.setItemControls({
-          type: 'CONNECTOR',
-          id: uiState.mode.mousedownItem.id
-        });
-      } else if (uiState.mode.mousedownItem.type === 'TEXTBOX') {
-        uiState.actions.setItemControls({
-          type: 'TEXTBOX',
-          id: uiState.mode.mousedownItem.id
-        });
-      }
-    } else {
-      uiState.actions.setItemControls(null);
-    }
 
     uiState.actions.setMode(
       produce(uiState.mode, (draft) => {

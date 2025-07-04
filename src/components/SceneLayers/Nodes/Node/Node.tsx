@@ -11,6 +11,9 @@ import { ViewItem } from 'src/types';
 import { useModelItem } from 'src/hooks/useModelItem';
 import { ExpandableLabel } from 'src/components/Label/ExpandableLabel';
 import { MarkdownEditor } from 'src/components/MarkdownEditor/MarkdownEditor';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { IconButton } from 'src/components/IconButton/IconButton';
+import { useUiStateStore } from 'src/stores/uiStateStore';
 
 interface Props {
   node: ViewItem;
@@ -20,6 +23,7 @@ interface Props {
 export const Node = ({ node, order }: Props) => {
   const modelItem = useModelItem(node.id);
   const { iconComponent } = useIcon(modelItem?.icon);
+  const uiStateActions = useUiStateStore((state) => state.actions);
 
   const position = useMemo(() => {
     return getTilePosition({
@@ -58,6 +62,13 @@ export const Node = ({ node, order }: Props) => {
           top: position.y
         }}
       >
+        <Box sx={{ position: 'absolute', right: 0, top: 0, zIndex: 10 }}>
+          <IconButton
+            name="Show controls"
+            Icon={<MoreVertIcon />}
+            onClick={() => uiStateActions.setItemControls({ type: 'ITEM', id: node.id })}
+          />
+        </Box>
         {(modelItem?.name || description) && (
           <Box
             sx={{ position: 'absolute' }}
