@@ -175,7 +175,7 @@ export const Cursor: ModeActions = {
     } else {
       uiState.actions.setItemControls(null);
     }
-
+    
     uiState.actions.setMode(
       produce(uiState.mode, (draft) => {
         draft.mousedownItem = null;
