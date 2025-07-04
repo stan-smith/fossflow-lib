@@ -93,7 +93,7 @@ const mousedown: ModeActionsAction = ({
       })
     );
 
-    uiState.actions.setItemControls(itemAtTile);
+
   } else {
     uiState.actions.setMode(
       produce(uiState.mode, (draft) => {
@@ -142,7 +142,9 @@ export const Cursor: ModeActions = {
   mouseup: ({ uiState, isRendererInteraction }) => {
     if (uiState.mode.type !== 'CURSOR' || !isRendererInteraction) return;
 
-    if (uiState.mode.mousedownItem) {
+    const hasMoved = uiState.mouse.mousedown && hasMovedTile(uiState.mouse);
+    
+    if (uiState.mode.mousedownItem && !hasMoved) {
       if (uiState.mode.mousedownItem.type === 'ITEM') {
         uiState.actions.setItemControls({
           type: 'ITEM',
