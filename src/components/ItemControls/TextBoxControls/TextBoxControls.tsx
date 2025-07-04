@@ -35,15 +35,15 @@ export const TextBoxControls = ({ id }: Props) => {
 
   return (
     <ControlsContainer>
-      <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'relative', paddingTop: '24px' }}>
         {/* Close button */}
         <MUIIconButton
           aria-label="Close"
           onClick={() => uiStateActions.setItemControls(null)}
           sx={{
             position: 'absolute',
-            top: 8,
-            right: 8,
+            top: 16,
+            right: 16,
             zIndex: 2,
           }}
           size="small"
