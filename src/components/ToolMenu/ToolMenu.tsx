@@ -72,8 +72,6 @@ export const ToolMenu = () => {
           disabled={!canRedo}
         />
 
-        <Divider orientation="vertical" flexItem sx={{ mx: 0.5 }} />
-
         {/* Main Tools */}
         <IconButton
           name="Select"

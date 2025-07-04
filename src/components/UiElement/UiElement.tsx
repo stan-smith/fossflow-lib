@@ -14,6 +14,7 @@ export const UiElement = ({ children, sx, style }: Props) => {
         borderRadius: 2,
         boxShadow: 1,
         borderColor: 'grey.400',
+        p: 0,
         ...sx
       }}
       style={style}
