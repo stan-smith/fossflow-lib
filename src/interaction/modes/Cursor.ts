@@ -102,6 +102,12 @@ const mousedown: ModeActionsAction = ({
     );
 
     uiState.actions.setItemControls(null);
+    
+    // Show context menu for empty space on left click
+    uiState.actions.setContextMenu({
+      type: 'EMPTY',
+      tile: uiState.mouse.position.tile
+    });
   }
 };
 
