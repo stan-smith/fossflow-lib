@@ -52,7 +52,10 @@ export const IconButton = ({
           minWidth: 'auto',
           bgcolor: isActive ? 'primary.light' : undefined,
           p: 0,
-          m: 0
+          m: 0,
+          '&:hover': {
+            bgcolor: isActive ? 'primary.light' : 'grey.100'
+          }
         }}
       >
         <Box
