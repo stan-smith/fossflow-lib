@@ -11,7 +11,8 @@ The `initialData` object contains the following properties:
 | `colors` | [`Color[]`](#color) | `[]` |
 | `items` | [`Item[]`](#item) | `[]` |
 | `views` | [`View[]`](#view) | `[]` |
-| `fitToScreen` | `boolean` | `false` |
+| `fitToView` | `boolean` | `false` |
+| `view` | `string \| undefined` | `undefined` |
 
 ## Example payload
 An example payload can be found here on [CodeSandbox](https://codesandbox.io/p/sandbox/github/markmanx/isoflow/tree/main).
@@ -160,6 +161,27 @@ ref:
   orientation?: 'X' | 'Y';
 }
 ```
+
+## `fitToView`
+
+```js
+boolean
+```
+
+**Notes on fitToView:**
+- When set to `true`, the scene will automatically fit to the viewport when loaded.
+- This is useful for ensuring the entire diagram is visible when the component first renders.
+
+## `view`
+
+```js
+string | undefined
+```
+
+**Notes on view:**
+- Specifies which view to display initially by providing the view's `id`.
+- If `undefined`, no specific view will be selected on load.
+- The view must exist in the `views` array for this to work.
 
 ## Validation
 The `initialData` object is validated before Isoflow renders the scene, and an error is thrown if invalid data is detected.
