@@ -8,7 +8,8 @@ import {
   CropSquareOutlined as CropSquareIcon,
   Title as TitleIcon,
   Undo as UndoIcon,
-  Redo as RedoIcon
+  Redo as RedoIcon,
+  Help as HelpIcon
 } from '@mui/icons-material';
 import { useUiStateStore } from 'src/stores/uiStateStore';
 import { IconButton } from 'src/components/IconButton/IconButton';
@@ -57,7 +58,7 @@ export const ToolMenu = () => {
 
   return (
     <UiElement>
-      <Stack direction="row">
+      <Stack direction="row" spacing={0.5} alignItems="center">
         {/* Undo/Redo Section */}
         <IconButton
           name="Undo (Ctrl+Z)"

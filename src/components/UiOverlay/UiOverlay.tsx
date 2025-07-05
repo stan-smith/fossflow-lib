@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 import { Box, useTheme, Typography, Stack } from '@mui/material';
 import { ChevronRight } from '@mui/icons-material';
-import { EditorModeEnum } from 'src/types';
+import { EditorModeEnum, DialogTypeEnum } from 'src/types';
 import { UiElement } from 'components/UiElement/UiElement';
 import { SceneLayer } from 'src/components/SceneLayer/SceneLayer';
 import { DragAndDrop } from 'src/components/DragAndDrop/DragAndDrop';
@@ -16,6 +16,7 @@ import { ContextMenuManager } from 'src/components/ContextMenu/ContextMenuManage
 import { useScene } from 'src/hooks/useScene';
 import { useModelStore } from 'src/stores/modelStore';
 import { ExportImageDialog } from '../ExportImageDialog/ExportImageDialog';
+import { HelpDialog } from '../HelpDialog/HelpDialog';
 
 const ToolsEnum = {
   MAIN_MENU: 'MAIN_MENU',
@@ -226,13 +227,15 @@ export const UiOverlay = () => {
         </SceneLayer>
       )}
 
-      {dialog === 'EXPORT_IMAGE' && (
+      {dialog === DialogTypeEnum.EXPORT_IMAGE && (
         <ExportImageDialog
           onClose={() => {
             return uiStateActions.setDialog(null);
           }}
         />
       )}
+
+      {dialog === DialogTypeEnum.HELP && <HelpDialog />}
 
       <SceneLayer>
         <Box ref={contextMenuAnchorRef} />
