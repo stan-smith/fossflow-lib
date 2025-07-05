@@ -85,6 +85,12 @@ export const useInteractionManager = () => {
           redo();
         }
       }
+
+      // Help dialog shortcut
+      if (e.key === 'F1') {
+        e.preventDefault();
+        uiState.actions.setDialog('HELP');
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);

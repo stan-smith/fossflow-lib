@@ -16,6 +16,7 @@ import { ContextMenuManager } from 'src/components/ContextMenu/ContextMenuManage
 import { useScene } from 'src/hooks/useScene';
 import { useModelStore } from 'src/stores/modelStore';
 import { ExportImageDialog } from '../ExportImageDialog/ExportImageDialog';
+import { HelpDialog } from '../HelpDialog/HelpDialog';
 
 const ToolsEnum = {
   MAIN_MENU: 'MAIN_MENU',
@@ -233,6 +234,8 @@ export const UiOverlay = () => {
           }}
         />
       )}
+
+      {dialog === 'HELP' && <HelpDialog />}
 
       <SceneLayer>
         <Box ref={contextMenuAnchorRef} />
