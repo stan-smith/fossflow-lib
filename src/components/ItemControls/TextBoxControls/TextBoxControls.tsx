@@ -50,7 +50,7 @@ export const TextBoxControls = ({ id }: Props) => {
         >
           <CloseIcon />
         </MUIIconButton>
-        <Section>
+        <Section title="Enter text">
           <TextField
             value={textBox.content}
             onChange={(e) => {
