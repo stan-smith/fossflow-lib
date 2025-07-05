@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { useUiStateStore } from 'src/stores/uiStateStore';
+import { DialogTypeEnum } from 'src/types/ui';
 
 interface ShortcutItem {
   action: string;
@@ -105,7 +106,7 @@ export const HelpDialog = () => {
   const dialog = useUiStateStore((state) => state.dialog);
   const setDialog = useUiStateStore((state) => state.actions.setDialog);
 
-  const isOpen = dialog === 'HELP';
+  const isOpen = dialog === DialogTypeEnum.HELP;
 
   const handleClose = () => {
     setDialog(null);

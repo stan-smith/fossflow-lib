@@ -19,6 +19,7 @@ import { useInitialDataManager } from 'src/hooks/useInitialDataManager';
 import { useModelStore } from 'src/stores/modelStore';
 import { useHistory } from 'src/hooks/useHistory';
 import { MenuItem } from './MenuItem';
+import { DialogTypeEnum } from 'src/types/ui';
 
 export const MainMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -86,7 +87,7 @@ export const MainMenu = () => {
 
   const onExportAsImage = useCallback(() => {
     uiStateActions.setIsMainMenuOpen(false);
-    uiStateActions.setDialog('EXPORT_IMAGE');
+    uiStateActions.setDialog(DialogTypeEnum.EXPORT_IMAGE);
   }, [uiStateActions]);
 
   const { clear } = initialDataManager;

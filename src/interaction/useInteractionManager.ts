@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { useModelStore } from 'src/stores/modelStore';
 import { useUiStateStore } from 'src/stores/uiStateStore';
 import { ModeActions, State, SlimMouseEvent } from 'src/types';
+import { DialogTypeEnum } from 'src/types/ui';
 import { getMouse, getItemAtTile } from 'src/utils';
 import { useResizeObserver } from 'src/hooks/useResizeObserver';
 import { useScene } from 'src/hooks/useScene';
@@ -89,7 +90,7 @@ export const useInteractionManager = () => {
       // Help dialog shortcut
       if (e.key === 'F1') {
         e.preventDefault();
-        uiState.actions.setDialog('HELP');
+        uiState.actions.setDialog(DialogTypeEnum.HELP);
       }
     };
 
