@@ -2,7 +2,8 @@ import React from 'react';
 import {
   Add as ZoomInIcon,
   Remove as ZoomOutIcon,
-  CropFreeOutlined as FitToScreenIcon
+  CropFreeOutlined as FitToScreenIcon,
+  Help as HelpIcon
 } from '@mui/icons-material';
 import { Stack, Box, Typography, Divider } from '@mui/material';
 import { toPx } from 'src/utils';
@@ -11,6 +12,7 @@ import { IconButton } from 'src/components/IconButton/IconButton';
 import { MAX_ZOOM, MIN_ZOOM } from 'src/config';
 import { useUiStateStore } from 'src/stores/uiStateStore';
 import { useDiagramUtils } from 'src/hooks/useDiagramUtils';
+import { DialogTypeEnum } from 'src/types/ui';
 
 export const ZoomControls = () => {
   const uiStateStoreActions = useUiStateStore((state) => {
@@ -22,7 +24,7 @@ export const ZoomControls = () => {
   const { fitToView } = useDiagramUtils();
 
   return (
-    <Stack direction="row" spacing={1}>
+    <Stack direction="row" spacing={1} alignItems="center">
       <UiElement>
         <Stack direction="row">
           <IconButton
@@ -58,6 +60,13 @@ export const ZoomControls = () => {
           name="Fit to screen"
           Icon={<FitToScreenIcon />}
           onClick={fitToView}
+        />
+      </UiElement>
+      <UiElement>
+        <IconButton
+          name="Help (F1)"
+          Icon={<HelpIcon />}
+          onClick={() => uiStateStoreActions.setDialog(DialogTypeEnum.HELP)}
         />
       </UiElement>
     </Stack>
