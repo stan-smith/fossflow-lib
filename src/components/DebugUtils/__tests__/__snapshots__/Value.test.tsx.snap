@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Value matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-1xrtkr"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-1xnd8mx-MuiTypography-root"
+    >
+      Snapshot Value
+    </p>
+  </div>
+</DocumentFragment>
+`;

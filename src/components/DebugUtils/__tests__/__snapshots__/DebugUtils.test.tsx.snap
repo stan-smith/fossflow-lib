@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DebugUtils matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-19lde9v"
+  >
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Mouse
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            0, 0
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Mouse down
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            null
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Mouse delta
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            null
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Scroll
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            0, 0
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Zoom
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            1
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Size
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            0, 0
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Scene info
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            0 items in scene
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Mode
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            PAN
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-1at3ae4"
+    >
+      <div
+        class="MuiBox-root css-v7v99c"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-b9d4f8-MuiTypography-root"
+        >
+          Mode data
+        </p>
+      </div>
+      <div
+        class="MuiBox-root css-i9gxme"
+      >
+        <div
+          class="MuiBox-root css-1xrtkr"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-1788z1s-MuiTypography-root"
+          >
+            {
+  "type": "PAN",
+  "showCursor": false
+}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
