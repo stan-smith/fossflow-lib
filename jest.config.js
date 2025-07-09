@@ -4,4 +4,11 @@ module.exports = {
   testEnvironment: "jsdom",
   modulePaths: ['node_modules', '<rootDir>'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js']
+  testEnvironment: "node",
+  modulePaths: ['node_modules', '<rootDir>'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/dist/',
+    '\\.d\\.ts$'
+  ]
 };

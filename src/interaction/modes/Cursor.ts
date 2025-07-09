@@ -142,6 +142,15 @@ export const Cursor: ModeActions = {
         items: [item],
         isInitialMovement: true
       });
+    } else {
+      // If no item is being dragged and the mouse has moved, switch to PAN mode
+      // Only do this if the drag started on empty space
+      if (uiState.mouse.mousedown) {
+        uiState.actions.setMode({
+          type: 'PAN',
+          showCursor: false
+        });
+      }
     }
   },
   mousedown,
