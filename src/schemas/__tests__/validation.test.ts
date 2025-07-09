@@ -115,3 +115,47 @@ describe('Model validation works correctly', () => {
     expect(issues[0].type).toStrictEqual('INVALID_RECTANGLE_COLOR_REF');
   });
 });
+
+describe('modelSchema Zod validation', () => {
+  const { model } = require('../../fixtures/model');
+
+  test('Valid model passes modelSchema validation', () => {
+    const result = require('../model').modelSchema.safeParse(model);
+    expect(result.success).toBe(true);
+  });
+
+  test('Model missing required title fails modelSchema validation', () => {
+    const { ...invalidModel } = model;
+    delete invalidModel.title;
+    const result = require('../model').modelSchema.safeParse(invalidModel);
+    expect(result.success).toBe(false);
+    expect(result.error.issues.some((issue: any) => issue.path.includes('title'))).toBe(true);
+  });
+
+  test('Model with invalid color reference fails modelSchema validation', () => {
+    const { ...invalidModel } = model;
+    // Add a rectangle with an invalid color to the first view
+    invalidModel.views = invalidModel.views.map((view: any, i: number) =>
+      i === 0
+        ? {
+            ...view,
+            rectangles: [
+              ...(view.rectangles || []),
+              { id: 'rect-invalid', color: 'notAColor', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }
+            ]
+          }
+        : view
+    );
+    const result = require('../model').modelSchema.safeParse(invalidModel);
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      // Print all issues for debugging
+      console.log('Zod issues:', result.error.issues);
+      expect(result.error.issues.some((issue: any) =>
+        issue.message === 'Rectangle references a color that does not exist in the model.' &&
+        issue.params &&
+        issue.params.rectangle === 'rect-invalid'
+      )).toBe(true);
+    }
+  });
+});
